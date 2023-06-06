@@ -1,6 +1,6 @@
 public class FindPermutationOfTheString {
     public static void main(String[] args) {
-        String word = "onet";
+        String word = "agrafka";
         System.out.println(permutationsCount(word.length()));
     }
 

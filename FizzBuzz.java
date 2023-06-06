@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class FizzBuzz {
     public static void main(String[] args) {
         int[] array = new int[100];

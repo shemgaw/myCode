@@ -1,19 +1,5 @@
-import java.util.Arrays;
+public class Anagrams {
 
-/**
- * Java program - String Anagram Example.
- * This program checks if two Strings are anagrams or not
- *
- * @author Javin Paul
- */
-public class AnagramCheck {
-
-    /*
-     * One way to find if two Strings are anagram in Java. This method
-     * assumes both arguments are not null and in lowercase.
-     *
-     * @return true, if both String are anagram
-     */
     public static boolean isAnagram(String word, String anagram) {
         if (word.length() != anagram.length()) {
             return false;
@@ -26,7 +12,7 @@ public class AnagramCheck {
             int index = anagram.indexOf(c);
             if (index != -1) {
                 anagram = anagram.substring(0, index)
-                        + anagram.substring(index + 1, anagram.length());
+                        + anagram.substring(index + 1);
             } else {
                 return false;
             }

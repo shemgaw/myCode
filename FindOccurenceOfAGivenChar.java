@@ -1,10 +1,10 @@
 public class FindOccurenceOfAGivenChar {
     public static void main(String[] args) {
         String word = "słowoooooo";
-        System.out.println(countOccurenceOfAGivenChar(word, "o"));
+        countOccurenceOfAGivenChar(word, "o");
     }
 
-    private static int countOccurenceOfAGivenChar(String word, String character) {
+    private static void countOccurenceOfAGivenChar(String word, String character) {
         int counter = 0;
         for (int i = 0; i < word.length(); i++) {
             if (String.valueOf(word.charAt(i)).matches(character)){
@@ -12,6 +12,6 @@ public class FindOccurenceOfAGivenChar {
             }
 
         }
-        return counter;
+        System.out.println("The letter occured " + counter + " times: ");
     }
 }

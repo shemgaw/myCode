@@ -2,7 +2,7 @@ import java.util.*;
 
 public class FindPairsOfIntegerArraysWhoseSumIsEqualToAGivenNumber {
     public static void main(String[] args) {
-        int[] array = new int[]{3,5,7,9,-1};
+        int[] array = new int[]{3, 5, 7, 9, -1, -8, 16, -100, 108};
         int givenNumber = 8;
         findPairsThatAreEqualGivenNumber(array, givenNumber);
     }
@@ -18,11 +18,13 @@ public class FindPairsOfIntegerArraysWhoseSumIsEqualToAGivenNumber {
                 }
             }
         }
-        Integer[] emptyArray = new Integer[set.size()];
-        Integer[] numbersArray = set.toArray(emptyArray);
+
+        Integer[] numbersArray = set.toArray(new Integer[set.size()]);
+
+        System.out.println(givenNumber + " jest wynikiem sumy liczb:");
 
         for (int i = 0; i < numbersArray.length; i+=2) {
-            System.out.println("Suma liczb: " + numbersArray[i] + " + " + numbersArray[i+1]);
+            System.out.println("(" + numbersArray[i] + ")" + " + " + "(" + numbersArray[i+1] + ")");
         }
 
     }

@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class LestTestIt {
+public class FindWordWithMaxMultipliedLetters {
     public static void main(String[] args) {
-        String sentence = "Pamiętaj o zakupach aabbccdd";
+        String sentence = "Pamiętaj o zakupach ania";
         System.out.println(checkIt(sentence));
     }
 
@@ -35,7 +35,9 @@ public class LestTestIt {
                 }
             }
         }
-
-     return wordWithMostDuplicates;
+        if (wordWithMostDuplicates.equals("")){
+            return "No multiplied letters occured";
+        }
+        return wordWithMostDuplicates;
     }
 }
