@@ -1,16 +1,13 @@
+import java.nio.CharBuffer;
+
 public class CheckIfStringContainsDigits {
     public static void main(String[] args) {
-        String word = "abcd7";
-        System.out.println(checkIfContainsDigit(word));
+        System.out.println(checkIfContainsDigit("abcdsrhrstnsftn"));
+        System.out.println(checkIfContainsDigit("abcdsrhrstnsftn456"));
     }
 
     private static boolean checkIfContainsDigit(String wordToCheck) {
-        for (int i = 0; i < wordToCheck.length(); i++) {
-            char c = wordToCheck.charAt(i);
-             if (String.valueOf(c).matches("[0-9]")){
-                 return true;
-             }
-        }
-        return false;
+        return CharBuffer.wrap(wordToCheck.toCharArray()).chars()
+                .anyMatch(Character::isDigit);
     }
 }

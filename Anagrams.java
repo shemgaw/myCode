@@ -4,9 +4,7 @@ public class Anagrams {
         if (word.length() != anagram.length()) {
             return false;
         }
-
         char[] chars = word.toCharArray();
-
 
         for (char c : chars) {
             int index = anagram.indexOf(c);

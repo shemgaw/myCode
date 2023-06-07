@@ -1,6 +1,6 @@
 public class CheckIfPalindrome {
     public static void main(String[] args) {
-        String word = "kajaki";
+        String word = "kajak";
         String reversedWord = reverseWord(word);
         System.out.println(isPalindrome(word, reversedWord));
     }
