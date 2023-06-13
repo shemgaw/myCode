@@ -1,20 +1,23 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.sql.SQLOutput;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FindDuplicateCharactersAtString {
     public static void main(String[] args) {
-        String word = "abcddddd";
+        String word = "abcd";
         System.out.println(checkIfDuplicateChars(word));
+        System.out.println(hasDuplicatedLetters(word));
         printDuplicateCharacters(word);
         printDuplicatedLetters(word);
+
+        printDuplicatedLetters2(word);
     }
 
     private static void printDuplicateCharacters(String word) {
 
         Map<Character, Integer> charMap = new HashMap<>();
-        for (int i =0; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             if (charMap.containsKey(word.charAt(i))) {
                 charMap.put(ch, charMap.get(ch) + 1);
@@ -24,31 +27,34 @@ public class FindDuplicateCharactersAtString {
         }
         Set<Map.Entry<Character, Integer>> entries = charMap.entrySet();
         for (Map.Entry<Character, Integer> entry : entries) {
-            if (entry.getValue() > 1){
+            if (entry.getValue() > 1) {
                 System.out.println("The letter " + entry.getKey() + " occured " + entry.getValue() + " times");
             }
         }
 
     }
 
-    public static void printDuplicatedLetters(String string){
+    public static void printDuplicatedLetters(String string) {
         char[] stringArray = string.toCharArray();
-        Map <Character, Integer> mapWithRepetitions = new HashMap<>();
+        Map<Character, Integer> mapWithRepetitions = new HashMap<>();
         for (Character character : stringArray) {
             if (mapWithRepetitions.containsKey(character)) {
                 mapWithRepetitions.put(character, mapWithRepetitions.get(character) + 1);
-            }
-            else {
+            } else {
                 mapWithRepetitions.put(character, 1);
             }
         }
 
         Set<Map.Entry<Character, Integer>> entries = mapWithRepetitions.entrySet();
-        System.out.println("Multiplied letters are:");
+        boolean areDoubledLetters = false;
+        System.out.print("Multiplied letters are:");
         for (Map.Entry<Character, Integer> entry : entries) {
-            if (entry.getValue() > 1)
+            if (entry.getValue() > 1) {
+                areDoubledLetters = true;
                 System.out.println(entry.getKey());
+            }
         }
+        if (!areDoubledLetters) System.out.println(" there are NO multiplied letters!");
     }
 
     private static boolean checkIfDuplicateChars(String word) {
@@ -66,10 +72,27 @@ public class FindDuplicateCharactersAtString {
         Collection<Integer> values = countMap.values();
         for (Integer value : values) {
             if (value > 1) {
-                hasDuplicates= true;
+                hasDuplicates = true;
                 break;
             }
         }
         return hasDuplicates;
     }
+
+
+    private static boolean hasDuplicatedLetters(String word) {
+        String[] wordString = word.split("");
+        long count = Arrays.stream(wordString).distinct().count();
+        return wordString.length != count;
+
+    }
+
+
+    private static void printDuplicatedLetters2(String word) {
+        Set<String> doubledLetters = Stream.of(word.split(""))
+                .filter(l -> Collections.frequency(List.of(word.split("")), l) > 1)
+                .collect(Collectors.toSet());
+        System.out.println(doubledLetters.size() != 0 ? "Duplicated Letters are: " + doubledLetters : "No duplicated letters");
+    }
+
 }
